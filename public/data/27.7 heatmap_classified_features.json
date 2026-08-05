@@ -1,0 +1,1837 @@
+[
+  {
+    "time_window_start": 0.0,
+    "time_window_end": 1000.0,
+    "address": "0x1ffced80",
+    "intensity": 1,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.0013142857933416963,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 21
+  },
+  {
+    "time_window_start": 0.0,
+    "time_window_end": 1000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.0013142857933416963,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 21
+  },
+  {
+    "time_window_start": 1000.0,
+    "time_window_end": 2000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 2000.0,
+    "time_window_end": 3000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 3000.0,
+    "time_window_end": 4000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 4000.0,
+    "time_window_end": 5000.0,
+    "address": "0x0",
+    "intensity": 19,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.0011709395330399275,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 19
+  },
+  {
+    "time_window_start": 5000.0,
+    "time_window_end": 6000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 6000.0,
+    "time_window_end": 7000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 7000.0,
+    "time_window_end": 8000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 8000.0,
+    "time_window_end": 9000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 9000.0,
+    "time_window_end": 10000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 10000.0,
+    "time_window_end": 11000.0,
+    "address": "0x0",
+    "intensity": 19,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.0011709395330399275,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 19
+  },
+  {
+    "time_window_start": 11000.0,
+    "time_window_end": 12000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 12000.0,
+    "time_window_end": 13000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 13000.0,
+    "time_window_end": 14000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 14000.0,
+    "time_window_end": 15000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 15000.0,
+    "time_window_end": 16000.0,
+    "address": "0x0",
+    "intensity": 19,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.0011709395330399275,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 19
+  },
+  {
+    "time_window_start": 16000.0,
+    "time_window_end": 17000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 17000.0,
+    "time_window_end": 18000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 18000.0,
+    "time_window_end": 19000.0,
+    "address": "0x0",
+    "intensity": 20,
+    "classification": "Permission Violator",
+    "severity": "high",
+    "matched_rule": "lock_pusher_pattern",
+    "anomaly_score": 0.002730641746893525,
+    "ai_flag": false,
+    "semantic": [
+      "\u26a0\ufe0f Repeated access to restricted memory region detected",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "medium",
+    "total_txns": 20
+  },
+  {
+    "time_window_start": 19000.0,
+    "time_window_end": 20000.0,
+    "address": "0x0",
+    "intensity": 21,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.01687372289597988,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "low",
+    "total_txns": 23
+  },
+  {
+    "time_window_start": 19000.0,
+    "time_window_end": 20000.0,
+    "address": "0x10050000",
+    "intensity": 2,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.01687372289597988,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "low",
+    "total_txns": 23
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x10050000",
+    "intensity": 5,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x0",
+    "intensity": 22,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x1000",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x10050040",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x10050080",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x100500c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 20000.0,
+    "time_window_end": 21000.0,
+    "address": "0x10050100",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.019625911489129066,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050140",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x0",
+    "intensity": 21,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050180",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x100501c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050200",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050240",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050280",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x100502c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050300",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050340",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x10050380",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 21000.0,
+    "time_window_end": 22000.0,
+    "address": "0x100503c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x0",
+    "intensity": 21,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050400",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050440",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050480",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x100504c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050500",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050540",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050580",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x100505c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050600",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 22000.0,
+    "time_window_end": 23000.0,
+    "address": "0x10050640",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050680",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x0",
+    "intensity": 22,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x100506c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050700",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050740",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050780",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x100507c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050800",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050840",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050880",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x100508c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 23000.0,
+    "time_window_end": 24000.0,
+    "address": "0x10050900",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006143597885966301,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 33
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050940",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x0",
+    "intensity": 21,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050980",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x100509c0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050a00",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050a40",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050a80",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050ac0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050b00",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050b40",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050b80",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 24000.0,
+    "time_window_end": 25000.0,
+    "address": "0x10050bc0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.0037392638623714447,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 32
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x0",
+    "intensity": 21,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050c00",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050c40",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050c80",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050cc0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050d00",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050d40",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050d80",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050dc0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050e00",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 25000.0,
+    "time_window_end": 26000.0,
+    "address": "0x10050e40",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.006741630379110575,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 31
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x10050e80",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x0",
+    "intensity": 21,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x10050ec0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x10050f00",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x10050f40",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x10050f80",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 26000.0,
+    "time_window_end": 27000.0,
+    "address": "0x10050fc0",
+    "intensity": 1,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.008178978227078915,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Access spans multiple memory locations (moderate entropy)",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0"
+    ],
+    "threat_level": "low",
+    "total_txns": 27
+  },
+  {
+    "time_window_start": 27000.0,
+    "time_window_end": 28000.0,
+    "address": "0x0",
+    "intensity": 7,
+    "classification": "Normal",
+    "severity": "low",
+    "matched_rule": "none",
+    "anomaly_score": 0.1533624827861786,
+    "ai_flag": false,
+    "semantic": [
+      "\u2714 AXI traffic appears normal with no critical anomalies",
+      "Frequent repeated access to same address (possible polling or contention)",
+      "Read-dominant traffic (likely monitoring or polling behavior)",
+      "Hotspot activity detected at address 0x0",
+      "Strong repeated access pattern suggests tight polling loop or contention"
+    ],
+    "threat_level": "low",
+    "total_txns": 7
+  }
+]
