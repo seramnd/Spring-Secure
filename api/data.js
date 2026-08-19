@@ -1,46 +1,38 @@
+import { createClient } from "@supabase/supabase-js";
+
 export default async function handler(req, res) {
   try {
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SECRET_KEY
+    );
 
-    if (!supabaseUrl || !supabaseSecretKey) {
+    const { data, error } = await supabase.storage
+      .from("spring-secure-data")
+      .download("heatmap_classified_features.json");
+
+    if (error) {
+      console.error("Supabase Storage error:", error);
+
       return res.status(500).json({
-        error: "Supabase environment variables are not configured"
+        error: "Failed to download heatmap data",
+        details: error.message
       });
     }
 
-    const fileUrl =
-      `${supabaseUrl}/storage/v1/object/spring-secure-data/heatmap_classified_features.json`;
+    const text = await data.text();
+    const json = JSON.parse(text);
 
-    const response = await fetch(fileUrl, {
-      headers: {
-        Authorization: `Bearer ${supabaseSecretKey}`,
-        apikey: supabaseSecretKey
-      }
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-
-      return res.status(response.status).json({
-        error: "Failed to load data from Supabase",
-        details: errorText
-      });
-    }
-
-    const data = await response.json();
-
-    // Prevent Vercel/browser caching from serving an old dataset.
     res.setHeader("Cache-Control", "no-store");
 
-    return res.status(200).json(data);
+    return res.status(200).json(json);
 
- } catch (error) {
-    console.error("Supabase data error:", error);
+  } catch (error) {
+    console.error("API error:", error);
 
     return res.status(500).json({
       error: "Internal server error",
       details: error.message
     });
-}
+  }
 }
