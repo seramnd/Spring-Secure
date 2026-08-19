@@ -35,11 +35,12 @@ export default async function handler(req, res) {
 
     return res.status(200).json(data);
 
-  } catch (error) {
+ } catch (error) {
     console.error("Supabase data error:", error);
 
     return res.status(500).json({
-      error: "Internal server error"
+      error: "Internal server error",
+      details: error.message
     });
-  }
+}
 }
