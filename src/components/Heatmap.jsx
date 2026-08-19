@@ -20,7 +20,10 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   console.log("First heatmap item:", heatmapData[0]);
-  console.log("Last heatmap item:", heatmapData[heatmapData.length - 1]);
+  console.log(
+    "Last heatmap item:",
+    heatmapData[heatmapData.length - 1]
+  );
 
 
   const SNAPSHOT_SIZE = 50;
@@ -48,9 +51,17 @@ function Heatmap({ rows = [], onCellSelect }) {
       snapshotEnd
     );
 
+
   /*
-    Convert global heatmap coordinates
-    into snapshot-local coordinates
+    Filter data to the current snapshot.
+
+    IMPORTANT:
+    We only filter the DATA here.
+    We do NOT filter the addresses.
+
+    This means all addresses will remain
+    visible on the Y-axis, even if they
+    have no activity in this snapshot.
   */
   const filteredSnapshotData =
     heatmapData.filter(
@@ -60,167 +71,208 @@ function Heatmap({ rows = [], onCellSelect }) {
         item.value[2] > 0
     );
 
-  console.log("Snapshot:", snapshotIndex + 1);
-  console.log("Filtered snapshot data:", filteredSnapshotData.length);
 
-// Get only addresses with activity
-  const snapshotAddressIndexes = [
-    ...new Set(
-      filteredSnapshotData.map(
-        item => item.value[1]
-      )
-    )
-  ];
+  console.log(
+    "Snapshot:",
+    snapshotIndex + 1
+  );
+
+  console.log(
+    "Filtered snapshot data:",
+    filteredSnapshotData.length
+  );
+
+
+  /*
+    SHOW ALL ADDRESSES
+
+    Previously, the addresses were generated
+    only from addresses with activity.
+
+    Now we use the complete addressLabels list.
+  */
   const snapshotAddresses =
-    snapshotAddressIndexes.map(
-      index => addressLabels[index]
-    );
+    addressLabels;
 
-  console.log("Snapshot addresses:", snapshotAddresses.length);
 
-// Create address index mapping
+  console.log(
+    "Snapshot addresses:",
+    snapshotAddresses.length
+  );
+
+
+  /*
+    Keep the original address indexes.
+
+    Since snapshotAddresses contains ALL
+    addresses in the same order as addressLabels,
+    the indexes do not need to be compressed.
+  */
   const addressIndexMap =
     Object.fromEntries(
-      snapshotAddressIndexes.map(
-        (oldIndex, newIndex) => [
-          oldIndex,
-          newIndex
+      addressLabels.map(
+        (_, index) => [
+          index,
+          index
         ]
       )
     );
-// Remap heatmap coordinates
+
+
+  /*
+    Convert global heatmap coordinates
+    into snapshot-local coordinates.
+  */
   const snapshotData =
     filteredSnapshotData.map(
-      item => ({
+      (item) => ({
         ...item,
 
-        value:[
-        item.value[0] - snapshotStart,
+        value: [
+          item.value[0] - snapshotStart,
 
-        addressIndexMap[
-        item.value[1]
-      ],
-        item.value[2]
-      ]
-    })
-  );
+          addressIndexMap[
+            item.value[1]
+          ],
 
-  const maxIntensity = snapshotData.reduce(
-    (max, item) =>
-      Math.max(
-        max,
-        item.value[2]
-      ),
-    1
-  );
+          item.value[2]
+        ]
+      })
+    );
+
+
+  /*
+    Calculate maximum intensity
+    for the current snapshot.
+  */
+  const maxIntensity =
+    snapshotData.reduce(
+      (max, item) =>
+        Math.max(
+          max,
+          item.value[2]
+        ),
+      1
+    );
+
+
   const chartHeight = 700;
-  const chartWidth = "100%";
+
 
   const option = {
+
     animation: false,
+
+
     tooltip: {
-      formatter: (params) => {
-        const row = params.data.row;
+    formatter: (params) => {
+    const row = params.data.row;
 
-        if (!row || row.isEmpty) {
+    if (!row || row.isEmpty) {
+      const timeIndex = params.data.value[0];
 
-          const timeIndex =
-            params.data.value[0];
-          return `
-            <strong>No Activity</strong><br/>
-            Address: ${row?.address ?? "Unknown"}<br/>
-            Window:
-            ${snapshotTimeLabels[timeIndex]}
-          `;
-        }
+      return `
+        <strong>No Activity</strong><br/>
+        <b>Address</b>: ${row?.address ?? "Unknown"}<br/>
+        <b>Time Window</b>: ${snapshotTimeLabels[timeIndex]}
+      `;
+    }
 
-        const semanticItems =
-          row.semantic
-            ? row.semantic
-                .map(
-                  item => `• ${item}`
-                )
-                .join("<br/>")
-            : "None";
-
-        return `
-          <strong>
-            ${row.classification}
-          </strong><br/><br/>
-
-          <b>Address</b>:
-          ${row.address}<br/>
-
-          <b>Time Window</b>:
-          ${row.time_window_start}
-          -
-          ${row.time_window_end} ns<br/>
-
-          <b>Intensity</b>:
-          ${row.intensity}<br/>
-
-          <b>Total Transactions</b>:
-          ${row.total_txns}<br/><br/>
-
-          <b>Severity</b>:
-          ${row.severity}<br/>
-
-          <b>Threat Level</b>:
-          ${row.threat_level}<br/>
-
-          <b>Anomaly Score</b>:
-          ${row.anomaly_score?.toFixed(3)}<br/>
-
-          <b>AI Flag</b>:
-          ${row.ai_flag ? "Yes" : "No"}<br/>
-
-          <b>Matched Rule</b>:
-          ${row.matched_rule}<br/><br/>
-
-          <b>Semantic Analysis</b><br/>
-
-          ${semanticItems}
-        `;
-      },
+    return `
+      <b>Address</b>: ${row.address}<br/>
+      <b>Time Window</b>:
+      ${row.time_window_start} -
+      ${row.time_window_end} ns<br/>
+      <b>Intensity</b>: ${row.intensity}<br/>
+      <b>Total Transactions</b>: ${row.total_txns}
+    `;
+    },
     },
 
+
     grid: {
+
       top: 40,
+
       left: 30,
+
       right: 30,
+
       bottom: 40,
+
       containLabel: true,
     },
 
+
+    /*
+      TIME AXIS
+    */
     xAxis: {
+
       type: "category",
-      data: snapshotTimeLabels,
+
+      data:
+        snapshotTimeLabels,
 
       axisLabel: {
-        interval: 5,
-        rotate: 35,
+
+        /*
+          Show every time label
+        */
+        interval: 0,
+
+        rotate: 45,
+
+        margin: 15,
       },
     },
 
+
+    /*
+      ADDRESS AXIS
+    */
     yAxis: {
+
       type: "category",
-      data: snapshotAddresses,
+
+      /*
+        ALL addresses are displayed.
+      */
+      data:
+        snapshotAddresses,
 
       axisLabel: {
-        interval: 5,
+
+        /*
+          Show EVERY address label.
+        */
+        interval: 0,
+
         fontSize: 10,
       },
     },
 
+
+    /*
+      HEATMAP COLOR SCALE
+    */
     visualMap: {
+
       min: 0,
-      max: maxIntensity,
+
+      max:
+        maxIntensity,
+
       calculable: true,
+
       orient: "horizontal",
+
       left: "center",
+
       bottom: 10,
 
       inRange: {
+
         color: [
           "#facc15",
           "#dc2626",
@@ -228,41 +280,82 @@ function Heatmap({ rows = [], onCellSelect }) {
       },
     },
 
+
+    /*
+      HEATMAP SERIES
+    */
     series: [
+
       {
+
         type: "heatmap",
+
         progressive: 5000,
+
         progressiveThreshold: 10000,
 
+
+        /*
+          Only active cells are included
+          in snapshotData.
+
+          Inactive addresses still appear
+          on the Y-axis because snapshotAddresses
+          contains ALL addresses.
+        */
         data:
           snapshotData.map(
             (item) => {
-              if(item.row?.isEmpty){
+
+              /*
+                Handle empty cells
+              */
+              if (
+                item.row?.isEmpty
+              ) {
+
                 return {
+
                   ...item,
 
-                  itemStyle:{
-                    color:"#111827",
+                  itemStyle: {
+
+                    color:
+                      "#111827",
                   },
                 };
               }
+
+
               return item;
             }
           ),
 
-        label:{
-          show:false,
+
+        label: {
+
+          show: false,
         },
 
-        itemStyle:{
-          borderWidth:1,
-          borderColor:(params)=>{
+
+        itemStyle: {
+
+          borderWidth: 1,
+
+          borderColor: (params) => {
+
             const row =
               params.data.row;
 
-            if(!row || row.isEmpty){
+
+            if (
+              !row ||
+              row.isEmpty
+            ) {
+
               return "#1f2d42";
             }
+
 
             return getClassificationBorderColor(
               row.classification
@@ -270,34 +363,67 @@ function Heatmap({ rows = [], onCellSelect }) {
           },
         },
 
-        emphasis:{
-          itemStyle:{
-            borderColor:"#ffffff",
-            borderWidth:3,
+
+        emphasis: {
+
+          itemStyle: {
+
+            borderColor:
+              "#ffffff",
+
+            borderWidth: 3,
           },
         },
       },
     ],
   };
 
+
+  /*
+    Cell click handler
+  */
   const onEvents = {
-    click:(params)=>{
+
+    click: (params) => {
+
       const row =
         params.data?.row;
 
-      if(!row || row.isEmpty){
+
+      /*
+        Ignore empty cells
+      */
+      if (
+        !row ||
+        row.isEmpty
+      ) {
+
         return;
       }
 
-      if(typeof onCellSelect === "function"){
+
+      if (
+        typeof onCellSelect ===
+        "function"
+      ) {
+
         onCellSelect(row);
       }
     },
   };
 
-  if(heatmapData.length === 0){
+
+  /*
+    No data
+  */
+  if (
+    heatmapData.length === 0
+  ) {
+
     return (
+
       <section className="card">
+
         <h2>
           Memory Heatmap
         </h2>
@@ -310,101 +436,183 @@ function Heatmap({ rows = [], onCellSelect }) {
     );
   }
 
+
+  /*
+    Main component
+  */
   return (
+
     <section className="card">
+
       <div className="section-header">
+
         <h2>
           Memory Heatmap
         </h2>
 
+
         <p>
-          Snapshot {snapshotIndex + 1}
+
+          Snapshot{" "}
+
+          {snapshotIndex + 1}
+
           /
+
           {totalSnapshots}
-          {" "}
-          |
+
+          {" "} | {" "}
+
           Showing:
+
           {" "}
+
           {timeLabels[snapshotStart]}
-          {" "}
-          →
-          {" "}
+
+          {" "} → {" "}
+
           {timeLabels[snapshotEnd - 1]}
+
         </p>
+
       </div>
 
+
       {/* Snapshot Navigator */}
+
       <div
         style={{
-          display:"flex",
-          alignItems:"center",
-          gap:"15px",
-          marginBottom:"15px",
+          display: "flex",
+
+          alignItems:
+            "center",
+
+          gap: "15px",
+
+          marginBottom:
+            "15px",
         }}
       >
+
         <button
+
           disabled={
             snapshotIndex === 0
           }
-          onClick={()=> 
+
+          onClick={() =>
             setSnapshotIndex(
               snapshotIndex - 1
             )
           }
         >
+
           ◀ Previous
+
         </button>
+
+
         <input
+
           type="range"
+
           min="0"
+
           max={
             totalSnapshots - 1
           }
-          value={snapshotIndex}
-          onChange={(e)=>
+
+          value={
+            snapshotIndex
+          }
+
+          onChange={(e) =>
             setSnapshotIndex(
-              Number(e.target.value)
+              Number(
+                e.target.value
+              )
             )
           }
+
           style={{
-            flex:1,
+            flex: 1,
           }}
         />
+
+
         <button
+
           disabled={
-            snapshotIndex === totalSnapshots - 1
+            snapshotIndex ===
+            totalSnapshots - 1
           }
-          onClick={()=> 
+
+          onClick={() =>
             setSnapshotIndex(
               snapshotIndex + 1
             )
           }
         >
+
           Next ▶
+
         </button>
+
       </div>
+
+
+      {/* Heatmap */}
 
       <div
         style={{
-          overflowX:"auto",
-          overflowY:"hidden",
-          maxHeight:"750px",
-          width:"100%",
+
+          overflowX:
+            "auto",
+
+          overflowY:
+            "hidden",
+
+          maxHeight:
+            "750px",
+
+          width:
+            "100%",
         }}
       >
+
         <ReactECharts
-          option={option}
-          onEvents={onEvents}
-          notMerge={true}
-          lazyUpdate={true}
+
+          option={
+            option
+          }
+
+          onEvents={
+            onEvents
+          }
+
+          notMerge={
+            true
+          }
+
+          lazyUpdate={
+            true
+          }
+
           style={{
-            height:`${chartHeight}px`,
-            width: "100%",
+
+            height:
+              `${chartHeight}px`,
+
+            width:
+              "100%",
           }}
         />
+
       </div>
 
     </section>
   );
 }
+
+
 export default Heatmap;

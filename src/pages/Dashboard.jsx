@@ -2,7 +2,6 @@ import "../styles/dashboard.css";
 
 import Heatmap from "../components/Heatmap";
 import SemanticPanel from "../components/SemanticPanel";
-import DriftPanel from "../components/DriftPanel";
 import SelectedHeatmapCell from "../components/SelectedHeatmapCell";
 import HeatmapFilters from "../components/HeatmapFilters";
 
@@ -83,9 +82,6 @@ function Dashboard() {
       />
     </div>
 
-      <div className="drift-container">
-        <DriftPanel drift={dashboardData.drift} />
-      </div>
 
     </main>
   );
