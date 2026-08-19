@@ -4,6 +4,7 @@ import Heatmap from "../components/Heatmap";
 import SemanticPanel from "../components/SemanticPanel";
 import SelectedHeatmapCell from "../components/SelectedHeatmapCell";
 import HeatmapFilters from "../components/HeatmapFilters";
+import JsonUploader from "../components/JsonUploader";
 
 import { dashboardData } from "../data/dashboardData";
 import { useTrafficData } from "../hooks/useTrafficData";
@@ -54,6 +55,8 @@ function Dashboard() {
           Connected
         </div>
       </header>
+      
+      <JsonUploader />
 
       <HeatmapFilters
         classificationFilter={classificationFilter}
