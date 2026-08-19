@@ -45,9 +45,12 @@ function Dashboard() {
   return (
     <main className="dashboard">
       <header className="app-header">
-        <div>
-          <p className="eyebrow">Memory Heatmap</p>
+        <div className="header-title">
+          <p className="eyebrow">MEMORY HEATMAP</p>
           <h1>Spring Secure</h1>
+          <p className="header-subtitle">
+           AXI4 Traffic Visualization & AI Monitoring
+          </p>
         </div>
 
         <div className="connection-badge">
@@ -55,8 +58,24 @@ function Dashboard() {
           Connected
         </div>
       </header>
-      
+
+      <section className="data-management-card">
+        <div className="data-management-header">
+        <div>
+          <p className="section-eyebrow">DATA MANAGEMENT</p>
+          <h2>Update Heatmap Data</h2>
+          <p>
+          Upload a new JSON dataset to update the dashboard.
+          </p>
+        </div>
+
+        <div className="upload-icon">
+         ↥
+      </div>
+    </div>
+
       <JsonUploader />
+  </section>
 
       <HeatmapFilters
         classificationFilter={classificationFilter}

@@ -36,7 +36,6 @@ export default function JsonUploader() {
     try {
       const text = await file.text();
 
-      // Make sure the file contains valid JSON.
       JSON.parse(text);
 
       setStatus("Uploading data...");
@@ -67,7 +66,6 @@ export default function JsonUploader() {
 
     } catch (error) {
       console.error("Upload error:", error);
-
       setStatus(`Upload failed: ${error.message}`);
 
     } finally {
@@ -77,33 +75,58 @@ export default function JsonUploader() {
 
   return (
     <div className="json-uploader">
-      <h2>Update Heatmap Data</h2>
 
-      <p>
-        Select a new heatmap JSON file to update the dashboard.
-      </p>
+      <div className="upload-controls">
 
-      <input
-        type="file"
-        accept=".json,application/json"
-        onChange={handleFileChange}
-        disabled={uploading}
-      />
+        <label className="file-picker">
+          <input
+            type="file"
+            accept=".json,application/json"
+            onChange={handleFileChange}
+            disabled={uploading}
+          />
+
+          <span className="file-picker-icon">＋</span>
+          <span>Choose JSON File</span>
+        </label>
+
+        <button
+          className="upload-button"
+          onClick={handleUpload}
+          disabled={!file || uploading}
+        >
+          {uploading ? "Uploading..." : "Upload Dataset"}
+        </button>
+
+      </div>
 
       {file && (
-        <p>
-          Selected file: <strong>{file.name}</strong>
+        <div className="selected-file">
+          <span className="file-check">✓</span>
+
+          <div>
+            <strong>{file.name}</strong>
+            <span>
+              {(file.size / 1024).toFixed(1)} KB
+            </span>
+          </div>
+        </div>
+      )}
+
+      {status && (
+        <p
+          className={`upload-status ${
+            status.startsWith("✓")
+              ? "success"
+              : status.startsWith("Upload failed")
+              ? "error"
+              : ""
+          }`}
+        >
+          {status}
         </p>
       )}
 
-      <button
-        onClick={handleUpload}
-        disabled={!file || uploading}
-      >
-        {uploading ? "Uploading..." : "Upload JSON"}
-      </button>
-
-      {status && <p>{status}</p>}
     </div>
   );
 }
