@@ -294,12 +294,16 @@ function Heatmap({ rows = [], onCellSelect }) {
         item.row?.address,
         item.row?.threat_level
       );
-      return {
+
+      const testCell = {
         ...item,
         itemStyle: {
-          color: "#ef4444",
+        color: "#ef4444",       
         },
       };
+
+    console.log("CELL STYLE:", testCell);
+    return testCell;
     }
   ),
         label: {
