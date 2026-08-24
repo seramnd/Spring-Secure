@@ -1183,3 +1183,37 @@ main,
   background: #050505 !important;
   min-height: 100vh;
 }
+
+/* =====================================================
+   FINAL DARK UI OVERRIDES
+   ===================================================== */
+
+html,
+body,
+#root {
+  background: #050505 !important;
+}
+
+main,
+.dashboard {
+  background: #050505 !important;
+}
+
+/* Make all major dashboard panels black */
+.data-management-card,
+.filters-card,
+.heatmap-card,
+.analysis-card {
+  background: #0a0a0a !important;
+}
+
+/* Inner panels */
+.analysis-address-section,
+.analysis-stat,
+.analysis-details > div,
+.semantic-list li,
+.json-uploader,
+.upload-status,
+.selected-file {
+  background: #111111 !important;
+}
