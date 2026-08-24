@@ -1162,3 +1162,24 @@ main {
   border-color: #3f1d1d;
   color: #f87171;
 }
+/* =====================================================
+   GLOBAL DARK BACKGROUND
+   ===================================================== */
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #050505 !important;
+}
+
+body {
+  background: #050505 !important;
+}
+
+main,
+.dashboard {
+  background: #050505 !important;
+  min-height: 100vh;
+}

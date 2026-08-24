@@ -59,23 +59,7 @@ function Dashboard() {
         </div>
       </header>
 
-      <section className="data-management-card">
-        <div className="data-management-header">
-        <div>
-          <p className="section-eyebrow">DATA MANAGEMENT</p>
-          <h2>Update Heatmap Data</h2>
-          <p>
-          Upload a new JSON dataset to update the dashboard.
-          </p>
-        </div>
-
-        <div className="upload-icon">
-         ↥
-      </div>
-    </div>
-
       <JsonUploader />
-  </section>
 
       <HeatmapFilters
         classificationFilter={classificationFilter}
