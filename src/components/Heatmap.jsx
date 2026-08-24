@@ -264,8 +264,8 @@ function Heatmap({ rows = [], onCellSelect }) {
     series: [
       {
         type: "heatmap",
-        progressive: 5000,
-        progressiveThreshold: 10000,
+        progressive: 0,
+        progressiveThreshold: 0,
         /*
           Only active cells are included
           in snapshotData.
