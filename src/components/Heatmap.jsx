@@ -380,21 +380,10 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   /*
-    -------------------------------------------------
     Y-AXIS LABEL DENSITY
-    -------------------------------------------------
-
-    We now have only ACTIVE addresses.
-
-    If there are still many active addresses,
-    reduce the number of text labels displayed.
-
-    This does NOT remove heatmap rows.
   */
   const addressCount =
     snapshotAddresses.length;
-
-
   const labelInterval =
     Math.max(
       1,
@@ -402,8 +391,6 @@ function Heatmap({ rows = [], onCellSelect }) {
         addressCount / 15
       )
     );  
-
-
   /*
     ECharts interval is zero-based.
 
@@ -426,23 +413,29 @@ function Heatmap({ rows = [], onCellSelect }) {
     space so the heatmap does not become a
     compressed wall of cells.
   */
-  const pixelsPerAddress =
-    addressCount > 400
-      ? 3
-      : addressCount > 300
-        ? 4
-        : addressCount > 200
-          ? 5
-          : addressCount > 100
-            ? 6
-            : 8;
+  const timeCount = snapshotTimeLabels.length;
 
-  const chartHeight =
-    Math.max(
-      300,
-      addressCount *
-        pixelsPerAddress
-    );
+  let chartHeight;
+
+  if (addressCount <= 10) {
+    chartHeight = 220;
+  } else if (addressCount <= 25) {
+    chartHeight = 300;
+  } else if (addressCount <= 50) {
+    chartHeight = 400;
+  } else if (addressCount <= 100) {
+    chartHeight = addressCount * 6;
+  } else if (addressCount <= 200) {
+    chartHeight = addressCount * 5;
+  } else {
+    chartHeight = addressCount * 4;
+  }
+
+// Keep the chart within a reasonable visual range
+  chartHeight = Math.min(
+    Math.max(chartHeight, 220),
+    750
+  );
   /*
     ECHARTS OPTION
   */
@@ -525,125 +518,70 @@ function Heatmap({ rows = [], onCellSelect }) {
       },
     },
 
-
-    /*
-      -------------------------------------------------
-      GRID
-      -------------------------------------------------
-    */
     grid: {
-
-      top: 30,
-
+      top: 20,
       left: 50,
-
       right: 30,
-
-      bottom: 110,
-
+      bottom: 80,
       containLabel: true,
     },
 
-
-    /*
-      -------------------------------------------------
-      X AXIS
-      -------------------------------------------------
-    */
     xAxis: {
-
       type: "category",
-
-      data:
-        snapshotTimeLabels,
+      data: snapshotTimeLabels,
 
       axisLabel: {
-
-        /*
-          Show every time label.
-        */
-        interval: 0,
-
+        interval: Math.max(
+          0,
+          Math.floor(snapshotTimeLabels.length / 12)
+        ),
         rotate: 45,
-
-        margin: 15,
-
         fontSize: 10,
+        color: "#64748b",
       },
 
-      axisLine: {
-
-        lineStyle: {
-
-          color: "#475569",
-        },
+    axisLine: {
+      lineStyle: {
+        color: "#334155",
       },
     },
 
+    axisTick: {
+      show: false,
+    },
+  },
 
-    /*
-      -------------------------------------------------
-      Y AXIS
-      -------------------------------------------------
-
-      ONLY addresses with activity in the
-      current snapshot are shown.
-
-      All their activity cells remain.
-    */
     yAxis: {
-
       type: "category",
-
-      data:
-        snapshotAddresses,
+      data: snapshotAddresses,
 
       axisLabel: {
-
-        /*
-          Reduce label clutter when there
-          are many active addresses.
-        */
-        interval:
-          yAxisLabelInterval,
-
+        interval: 0,
         fontSize: 10,
-
-        margin: 10,
-
+        margin: 5,
         hideOverlap: true,
+        color: "#64748b",
       },
 
       axisLine: {
-
         lineStyle: {
-
-          color: "#475569",
+          color: "#334155",
         },
+      },
+
+      axisTick: {
+        show: false,
       },
     },
 
-
-    /*
-      -------------------------------------------------
-      HEATMAP SERIES
-      -------------------------------------------------
-    */
     series: [
-
       {
-
         type: "heatmap",
-
-
         /*
           Disable progressive rendering.
         */
         progressive: 0,
-
         progressiveThreshold: 0,
-
-
         /*
           ONLY ACTIVE CELLS ARE INCLUDED.
 
@@ -652,19 +590,9 @@ function Heatmap({ rows = [], onCellSelect }) {
         */
         data:
           snapshotData,
-
-
         label: {
-
           show: false,
         },
-
-
-        /*
-          -------------------------------------------------
-          CELL STYLE
-          -------------------------------------------------
-        */
         itemStyle: {
           color: (params) => {
           const row = params.data?.row;
