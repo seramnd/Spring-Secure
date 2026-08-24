@@ -541,7 +541,7 @@ function Heatmap({ rows = [], onCellSelect }) {
 
     axisLine: {
       lineStyle: {
-        color: "#334155",
+        color: "#262626",
       },
     },
 
@@ -559,12 +559,12 @@ function Heatmap({ rows = [], onCellSelect }) {
         fontSize: 10,
         margin: 5,
         hideOverlap: true,
-        color: "#64748b",
+        color: "#525252",
       },
 
       axisLine: {
         lineStyle: {
-          color: "#334155",
+          color: "#262626",
         },
       },
 
