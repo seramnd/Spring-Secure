@@ -427,11 +427,15 @@ function Heatmap({ rows = [], onCellSelect }) {
     compressed wall of cells.
   */
   const pixelsPerAddress =
-    addressCount > 500
-      ? 8
-      : addressCount > 250
-        ? 10
-        : 14;
+    addressCount > 400
+      ? 3
+      : addressCount > 300
+        ? 4
+        : addressCount > 200
+          ? 5
+          : addressCount > 100
+            ? 6
+            : 8;
 
   const chartHeight =
     Math.max(
@@ -439,12 +443,8 @@ function Heatmap({ rows = [], onCellSelect }) {
       addressCount *
         pixelsPerAddress
     );
-
-
   /*
-    -------------------------------------------------
     ECHARTS OPTION
-    -------------------------------------------------
   */
   const option = {
 
@@ -1065,7 +1065,7 @@ function Heatmap({ rows = [], onCellSelect }) {
         <div
           style={{
           overflowX: "auto",
-          overflowY: "visible",
+          overflowY: "hidden",
           width: "100%",
           paddingBottom: "5px",        
         }}
