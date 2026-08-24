@@ -357,7 +357,7 @@ function Heatmap({ rows = [], onCellSelect }) {
     /*
       NORMAL
       -------------------------
-      BLUE.
+      YELLOW
     */
     if (
       String(
@@ -365,7 +365,7 @@ function Heatmap({ rows = [], onCellSelect }) {
       ).trim() ===
       "Normal"
     ) {
-      return "#3b82f6";
+      return "#eab308";
     }
 
 
@@ -377,7 +377,6 @@ function Heatmap({ rows = [], onCellSelect }) {
       row.classification
     );
   };
-
 
   /*
     Y-AXIS LABEL DENSITY
