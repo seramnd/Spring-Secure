@@ -270,12 +270,21 @@ function Heatmap({ rows = [], onCellSelect }) {
           on its row metadata.
         */
         itemStyle: {
-          color: (params) => {
-            const row =
-              params.data?.row;
+        color: (params) => {
+          const row = params.data?.row;
 
-            return getThreatColor(row);
-          },
+        console.log(
+          "ECHARTS COLOR:",
+        {
+          data: params.data,
+          classification: row?.classification,
+          threat_level: row?.threat_level,
+          color: getThreatColor(row),
+        }
+        );
+
+      return getThreatColor(row);    
+    },
 
           borderWidth: 1,
 
