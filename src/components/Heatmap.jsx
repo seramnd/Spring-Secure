@@ -10,11 +10,18 @@ import {
 function Heatmap({ rows = [], onCellSelect }) {
 
   /*
-    Build complete heatmap data.
+    -------------------------------------------------
+    BUILD COMPLETE HEATMAP DATA
+    -------------------------------------------------
 
-    IMPORTANT:
-    We keep ALL addresses and ALL activity.
-    Nothing is removed just because it is inactive.
+    The utility function receives the complete
+    dataset and creates:
+
+      - timeLabels
+      - addressLabels
+      - heatmapData
+
+    We do NOT remove anything here.
   */
   const {
     timeLabels,
@@ -24,11 +31,11 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   /*
-    Snapshot configuration.
-
-    Each snapshot contains a fixed number
-    of time windows.
+    -------------------------------------------------
+    SNAPSHOT CONFIGURATION
+    -------------------------------------------------
   */
+
   const SNAPSHOT_SIZE = 50;
 
   const [snapshotIndex, setSnapshotIndex] =
@@ -59,7 +66,8 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   /*
-    Time labels for the current snapshot.
+    Time labels belonging to the
+    current snapshot.
   */
   const snapshotTimeLabels =
     timeLabels.slice(
@@ -69,21 +77,110 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   /*
-    ALL addresses remain visible.
+    -------------------------------------------------
+    GET ALL CELLS FOR CURRENT SNAPSHOT
+    -------------------------------------------------
 
-    We deliberately do NOT filter this list
-    based on activity.
+    At this stage we still keep ALL cells,
+    including empty cells.
   */
-  const snapshotAddresses =
-    addressLabels;
+  const snapshotCells =
+    heatmapData.filter(
+      (item) => {
+
+        const globalTimeIndex =
+          item.value?.[0];
+
+        return (
+          globalTimeIndex >=
+            snapshotStart &&
+          globalTimeIndex <
+            snapshotEnd
+        );
+      }
+    );
 
 
   /*
-    Build a lookup for address indexes.
+    -------------------------------------------------
+    FIND ACTIVE ADDRESSES
+    -------------------------------------------------
 
-    The original heatmap already uses
-    addressIndex from addressLabels,
-    so we preserve that structure.
+    We remove an address ONLY if it has
+    absolutely no activity in the current
+    snapshot.
+
+    An address is active when:
+
+      - row exists
+      - row is not empty
+      - intensity > 0
+  */
+  const activeAddressSet =
+    new Set(
+      snapshotCells
+        .filter(
+          (item) => {
+
+            const row =
+              item.row;
+
+            return (
+              row &&
+              !row.isEmpty &&
+              Number(
+                row.intensity
+              ) > 0
+            );
+          }
+        )
+        .map(
+          (item) =>
+            item.row.address
+        )
+        .filter(Boolean)
+    );
+
+
+  /*
+    -------------------------------------------------
+    ACTIVE ADDRESS LIST
+    -------------------------------------------------
+
+    We start from the original addressLabels
+    so the hexadecimal ordering remains consistent.
+
+    Addresses with ZERO activity in this snapshot
+    are removed.
+
+    IMPORTANT:
+    This does NOT remove any active cells.
+  */
+  const snapshotAddresses =
+    addressLabels
+      .filter(
+        (address) =>
+          activeAddressSet.has(
+            address
+          )
+      )
+      .sort(
+        (a, b) =>
+          Number.parseInt(a, 16) -
+          Number.parseInt(b, 16)
+      );
+
+
+  /*
+    -------------------------------------------------
+    ADDRESS -> Y-AXIS INDEX
+    -------------------------------------------------
+
+    Example:
+
+      0x1000       -> 0
+      0x10200      -> 1
+      0x80000040   -> 2
   */
   const addressIndexMap =
     new Map(
@@ -97,24 +194,44 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   /*
-    Get all heatmap cells belonging
-    to the current snapshot.
+    -------------------------------------------------
+    BUILD FINAL SNAPSHOT DATA
+    -------------------------------------------------
 
-    Empty cells are retained.
+    We keep EVERY active cell.
+
+    Example:
+
+      Address A
+        28001-29001 -> active
+        29001-30001 -> active
+        30001-31001 -> active
+
+    ALL THREE CELLS remain.
+
+    We are only removing addresses that have
+    no activity anywhere in the snapshot.
   */
   const snapshotData =
-    heatmapData
+    snapshotCells
       .filter(
         (item) => {
 
-          const globalTimeIndex =
-            item.value?.[0];
+          const row =
+            item.row;
+
+          const address =
+            row?.address;
 
           return (
-            globalTimeIndex >=
-              snapshotStart &&
-            globalTimeIndex <
-              snapshotEnd
+            row &&
+            !row.isEmpty &&
+            Number(
+              row.intensity
+            ) > 0 &&
+            addressIndexMap.has(
+              address
+            )
           );
         }
       )
@@ -128,10 +245,8 @@ function Heatmap({ rows = [], onCellSelect }) {
             globalTimeIndex -
             snapshotStart;
 
-
           const address =
             item.row?.address;
-
 
           const addressIndex =
             addressIndexMap.get(
@@ -144,15 +259,22 @@ function Heatmap({ rows = [], onCellSelect }) {
             ...item,
 
             /*
-              Convert the global time index
-              to the local snapshot index.
+              ECharts coordinates:
+
+                X = local time index
+                Y = active address index
+                Z = intensity
             */
             value: [
+
               localTimeIndex,
+
               addressIndex,
+
               Number(
                 item.row?.intensity
               ) || 0,
+
             ],
 
             row:
@@ -163,16 +285,17 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
   /*
-    Colour logic.
+    -------------------------------------------------
+    CELL COLOUR
+    -------------------------------------------------
 
-    This is deliberately kept separate
-    so that both the cell fill and border
-    use exactly the same colour.
+    This is intentionally centralized so
+    the fill and border always agree.
   */
   const getCellColor = (row) => {
 
     /*
-      Empty / inactive cell.
+      Empty cell.
     */
     if (
       !row ||
@@ -183,7 +306,9 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
     /*
-      Bus Starver is RED.
+      BUS STARVER
+      -------------------------
+      Explicitly RED.
     */
     if (
       String(
@@ -196,13 +321,16 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
     /*
-      High threat is RED.
+      HIGH THREAT
+      -------------------------
+      RED.
     */
     if (
       String(
         row.threat_level
-      ).toLowerCase()
-        .trim() ===
+      )
+        .trim()
+        .toLowerCase() ===
       "high"
     ) {
       return "#ef4444";
@@ -210,13 +338,16 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
     /*
-      Medium threat is ORANGE.
+      MEDIUM THREAT
+      -------------------------
+      ORANGE.
     */
     if (
       String(
         row.threat_level
-      ).toLowerCase()
-        .trim() ===
+      )
+        .trim()
+        .toLowerCase() ===
       "medium"
     ) {
       return "#f97316";
@@ -224,7 +355,9 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
     /*
-      Normal remains BLUE.
+      NORMAL
+      -------------------------
+      BLUE.
     */
     if (
       String(
@@ -237,7 +370,7 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
     /*
-      Fallback to your existing
+      Fallback to existing
       classification colour logic.
     */
     return getClassificationBorderColor(
@@ -251,38 +384,17 @@ function Heatmap({ rows = [], onCellSelect }) {
     Y-AXIS LABEL DENSITY
     -------------------------------------------------
 
-    IMPORTANT:
+    We now have only ACTIVE addresses.
 
-    We are NOT removing addresses.
+    If there are still many active addresses,
+    reduce the number of text labels displayed.
 
-    We only reduce how many text labels
-    are displayed.
-
-    Every address still exists as a heatmap row.
+    This does NOT remove heatmap rows.
   */
-
   const addressCount =
     snapshotAddresses.length;
 
 
-  /*
-    Target approximately 20-25 visible
-    labels at a time.
-
-    Example:
-
-    20 addresses
-      -> show every address
-
-    100 addresses
-      -> show roughly every 5th
-
-    500 addresses
-      -> show roughly every 20th
-
-    1000 addresses
-      -> show roughly every 40th
-  */
   const labelInterval =
     Math.max(
       1,
@@ -295,10 +407,8 @@ function Heatmap({ rows = [], onCellSelect }) {
   /*
     ECharts interval is zero-based.
 
-    interval = 1 means every 2nd label.
-    interval = 4 means every 5th label.
-
-    Therefore subtract 1.
+    interval = 0 -> every label
+    interval = 4 -> every 5th label
   */
   const yAxisLabelInterval =
     Math.max(
@@ -312,22 +422,21 @@ function Heatmap({ rows = [], onCellSelect }) {
     CHART HEIGHT
     -------------------------------------------------
 
-    Every address gets its own vertical space.
-
-    The container below is scrollable, so a large
-    number of addresses does not compress the chart.
+    Give each active address enough vertical
+    space so the heatmap does not become a
+    compressed wall of cells.
   */
   const pixelsPerAddress =
     addressCount > 500
       ? 14
       : addressCount > 250
         ? 16
-        : 20;
+        : 24;
 
 
   const chartHeight =
     Math.max(
-      500,
+      400,
       addressCount *
         pixelsPerAddress
     );
@@ -341,8 +450,7 @@ function Heatmap({ rows = [], onCellSelect }) {
   const option = {
 
     /*
-      Disable animation because this is
-      a large heatmap.
+      Disable animation for large datasets.
     */
     animation: false,
 
@@ -350,11 +458,16 @@ function Heatmap({ rows = [], onCellSelect }) {
     /*
       NO visualMap.
 
-      Cell colours are controlled directly
+      Cell colour is controlled directly
       through itemStyle.color.
     */
 
 
+    /*
+      -------------------------------------------------
+      TOOLTIP
+      -------------------------------------------------
+    */
     tooltip: {
 
       formatter: (params) => {
@@ -364,7 +477,7 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
         /*
-          Empty / inactive cell.
+          Empty cell.
         */
         if (
           !row ||
@@ -414,6 +527,11 @@ function Heatmap({ rows = [], onCellSelect }) {
     },
 
 
+    /*
+      -------------------------------------------------
+      GRID
+      -------------------------------------------------
+    */
     grid: {
 
       top: 30,
@@ -442,6 +560,9 @@ function Heatmap({ rows = [], onCellSelect }) {
 
       axisLabel: {
 
+        /*
+          Show every time label.
+        */
         interval: 0,
 
         rotate: 45,
@@ -466,9 +587,10 @@ function Heatmap({ rows = [], onCellSelect }) {
       Y AXIS
       -------------------------------------------------
 
-      ALL addresses remain here.
+      ONLY addresses with activity in the
+      current snapshot are shown.
 
-      Only the text labels are reduced.
+      All their activity cells remain.
     */
     yAxis: {
 
@@ -480,8 +602,8 @@ function Heatmap({ rows = [], onCellSelect }) {
       axisLabel: {
 
         /*
-          Reduce text clutter without
-          removing any heatmap rows.
+          Reduce label clutter when there
+          are many active addresses.
         */
         interval:
           yAxisLabelInterval,
@@ -490,9 +612,6 @@ function Heatmap({ rows = [], onCellSelect }) {
 
         margin: 10,
 
-        /*
-          Keep labels readable.
-        */
         hideOverlap: true,
       },
 
@@ -508,7 +627,7 @@ function Heatmap({ rows = [], onCellSelect }) {
 
     /*
       -------------------------------------------------
-      HEATMAP
+      HEATMAP SERIES
       -------------------------------------------------
     */
     series: [
@@ -527,16 +646,10 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
         /*
-          ALL cells are rendered.
+          ONLY ACTIVE CELLS ARE INCLUDED.
 
-          This includes:
-
-          - Bus Starver
-          - Normal
-          - Memory Prober
-          - Permission Violator
-          - Empty
-          - other classifications
+          Empty addresses have already been
+          removed from snapshotAddresses.
         */
         data:
           snapshotData,
@@ -577,13 +690,10 @@ function Heatmap({ rows = [], onCellSelect }) {
           /*
             CELL BORDER
 
-            IMPORTANT:
+            Same colour as the fill.
 
-            The border uses the SAME colour
-            as the cell fill.
-
-            This prevents the old blue border
-            from visually dominating red cells.
+            This prevents a blue border from
+            visually dominating red cells.
           */
           borderColor: (params) => {
 
@@ -684,6 +794,155 @@ function Heatmap({ rows = [], onCellSelect }) {
 
         <p>
           No heatmap data available.
+        </p>
+
+      </section>
+    );
+  }
+
+
+  /*
+    -------------------------------------------------
+    NO ACTIVITY IN CURRENT SNAPSHOT
+    -------------------------------------------------
+  */
+  if (
+    snapshotAddresses.length === 0
+  ) {
+
+    return (
+
+      <section className="card">
+
+        <div
+          className="section-header"
+        >
+
+          <h2>
+            Memory Heatmap
+          </h2>
+
+          <p>
+
+            Snapshot{" "}
+
+            {snapshotIndex + 1}
+
+            /
+
+            {totalSnapshots}
+
+            {" | "}
+
+            Showing:
+
+            {" "}
+
+            {
+              timeLabels[
+                snapshotStart
+              ]
+            }
+
+            {" → "}
+
+            {
+              timeLabels[
+                snapshotEnd - 1
+              ]
+            }
+
+          </p>
+
+        </div>
+
+
+        {/* Snapshot Navigator */}
+
+        <div
+          style={{
+
+            display: "flex",
+
+            alignItems:
+              "center",
+
+            gap: "15px",
+
+            marginBottom:
+              "15px",
+          }}
+        >
+
+          <button
+
+            disabled={
+              snapshotIndex === 0
+            }
+
+            onClick={() =>
+              setSnapshotIndex(
+                snapshotIndex - 1
+              )
+            }
+          >
+
+            ◀ Previous
+
+          </button>
+
+
+          <input
+
+            type="range"
+
+            min="0"
+
+            max={
+              totalSnapshots - 1
+            }
+
+            value={
+              snapshotIndex
+            }
+
+            onChange={(e) =>
+              setSnapshotIndex(
+                Number(
+                  e.target.value
+                )
+              )
+            }
+
+            style={{
+              flex: 1,
+            }}
+          />
+
+
+          <button
+
+            disabled={
+              snapshotIndex ===
+              totalSnapshots - 1
+            }
+
+            onClick={() =>
+              setSnapshotIndex(
+                snapshotIndex + 1
+              )
+            }
+          >
+
+            Next ▶
+
+          </button>
+
+        </div>
+
+
+        <p>
+          No activity in this snapshot.
         </p>
 
       </section>
@@ -833,13 +1092,15 @@ function Heatmap({ rows = [], onCellSelect }) {
 
       {/* -------------------------------------------------
           HEATMAP
+          -------------------------------------------------
 
-          ALL addresses are retained.
+          Only addresses with activity are shown.
 
-          If the chart is taller than the container,
-          the user can scroll vertically.
-          ------------------------------------------------- */}
+          All activity for those addresses remains.
 
+          The chart is vertically scrollable if
+          there are many active addresses.
+      */}
       <div
         style={{
 
@@ -855,10 +1116,6 @@ function Heatmap({ rows = [], onCellSelect }) {
           width:
             "100%",
 
-          /*
-            Give the scrollbar a little
-            separation from the chart.
-          */
           paddingBottom:
             "5px",
         }}
@@ -890,6 +1147,7 @@ function Heatmap({ rows = [], onCellSelect }) {
             width:
               "100%",
           }}
+
         />
 
       </div>
