@@ -3,7 +3,6 @@ import ReactECharts from "echarts-for-react";
 
 import {
   buildClassifiedHeatmap,
-  getClassificationBorderColor,
 } from "../utils/classifiedHeatmapUtils";
 
 function Heatmap({ rows = [], onCellSelect }) {
@@ -36,15 +35,10 @@ function Heatmap({ rows = [], onCellSelect }) {
     );
 
   /*
-    Filter data to the current snapshot.
+    Only active cells are included
+    in the displayed snapshot data.
 
-    IMPORTANT:
-    We only filter the DATA here.
-    We do NOT filter the addresses.
-
-    This keeps all addresses visible
-    on the Y-axis even when they have
-    no activity in the current snapshot.
+    All addresses remain on the Y-axis.
   */
   const filteredSnapshotData =
     heatmapData.filter(
@@ -55,17 +49,13 @@ function Heatmap({ rows = [], onCellSelect }) {
     );
 
   /*
-    Show ALL addresses.
+    Keep all addresses visible.
   */
   const snapshotAddresses =
     addressLabels;
 
   /*
     Keep the original address indexes.
-
-    Since snapshotAddresses contains
-    all addresses in the same order as
-    addressLabels, the indexes remain valid.
   */
   const addressIndexMap =
     Object.fromEntries(
@@ -78,8 +68,8 @@ function Heatmap({ rows = [], onCellSelect }) {
     );
 
   /*
-    Convert global heatmap coordinates
-    into snapshot-local coordinates.
+    Convert global time indexes
+    into snapshot-local indexes.
   */
   const snapshotData =
     filteredSnapshotData.map(
@@ -96,12 +86,10 @@ function Heatmap({ rows = [], onCellSelect }) {
   const chartHeight = 700;
 
   /*
-    Determine the heatmap colour based
-    on threat level / classification.
+    Determine the heatmap colour.
 
-    IMPORTANT:
-    Intensity is NOT used for colour.
-    Intensity remains the access count.
+    Colour is based on threat level /
+    classification, NOT intensity.
   */
   const getThreatColor = (row) => {
     if (!row || row.isEmpty) {
@@ -109,8 +97,7 @@ function Heatmap({ rows = [], onCellSelect }) {
     }
 
     /*
-      Bus Starver is explicitly treated
-      as a high-threat classification.
+      Bus Starver is explicitly red.
     */
     if (
       row.classification === "Bus Starver"
@@ -150,8 +137,7 @@ function Heatmap({ rows = [], onCellSelect }) {
     }
 
     /*
-      Default for anything not explicitly
-      classified above.
+      Default
     */
     return "#3b82f6";
   };
@@ -176,23 +162,34 @@ function Heatmap({ rows = [], onCellSelect }) {
             <b>Address</b>:
             ${row?.address ?? "Unknown"}<br/>
             <b>Time Window</b>:
-            ${snapshotTimeLabels[timeIndex] ?? "Unknown"}
+            ${
+              snapshotTimeLabels[
+                timeIndex
+              ] ?? "Unknown"
+            }
           `;
         }
 
         return `
-          <b>Address</b>: ${row.address}<br/>
+          <b>Address</b>:
+          ${row.address}<br/>
+
           <b>Time Window</b>:
           ${row.time_window_start} -
           ${row.time_window_end} ns<br/>
+
           <b>Classification</b>:
           ${row.classification ?? "Unknown"}<br/>
+
           <b>Threat Level</b>:
           ${row.threat_level ?? "Unknown"}<br/>
+
           <b>Severity</b>:
           ${row.severity ?? "Unknown"}<br/>
+
           <b>Intensity</b>:
           ${row.intensity}<br/>
+
           <b>Total Transactions</b>:
           ${row.total_txns}
         `;
@@ -212,6 +209,7 @@ function Heatmap({ rows = [], onCellSelect }) {
     */
     xAxis: {
       type: "category",
+
       data: snapshotTimeLabels,
 
       axisLabel: {
@@ -226,6 +224,7 @@ function Heatmap({ rows = [], onCellSelect }) {
     */
     yAxis: {
       type: "category",
+
       data: snapshotAddresses,
 
       axisLabel: {
@@ -235,26 +234,20 @@ function Heatmap({ rows = [], onCellSelect }) {
     },
 
     /*
-      HEATMAP SERIES
+      HEATMAP
     */
     series: [
       {
         type: "heatmap",
 
         /*
-          Disable progressive rendering so
-          per-cell colours are applied
-          consistently.
+          Disable progressive rendering.
         */
         progressive: 0,
         progressiveThreshold: 0,
 
         /*
-          Only active cells are included
-          in snapshotData.
-
-          Inactive addresses still appear
-          on the Y-axis.
+          Active cells.
         */
         data: snapshotData,
 
@@ -263,31 +256,30 @@ function Heatmap({ rows = [], onCellSelect }) {
         },
 
         /*
-          MAIN CELL STYLE
-
-          ECharts determines the colour
-          for each individual cell based
-          on its row metadata.
+          CELL STYLE
         */
         itemStyle: {
-        color: (params) => {
-          const row = params.data?.row;
+          /*
+            Fill colour
+          */
+          color: (params) => {
+            const row =
+              params.data?.row;
 
-        console.log(
-          "ECHARTS COLOR:",
-        {
-          data: params.data,
-          classification: row?.classification,
-          threat_level: row?.threat_level,
-          color: getThreatColor(row),
-        }
-        );
+            return getThreatColor(row);
+          },
 
-      return getThreatColor(row);    
-    },
+          /*
+            Border colour
 
-          borderWidth: 1,
+            IMPORTANT:
+            The border now uses the
+            SAME colour as the fill.
 
+            This prevents the blue
+            borders from visually
+            overpowering the red cells.
+          */
           borderColor: (params) => {
             const row =
               params.data?.row;
@@ -299,14 +291,14 @@ function Heatmap({ rows = [], onCellSelect }) {
               return "#1f2d42";
             }
 
-            return getClassificationBorderColor(
-              row.classification
-            );
+            return getThreatColor(row);
           },
+
+          borderWidth: 1,
         },
 
         /*
-          Highlight selected / hovered cell.
+          Hovered cell
         */
         emphasis: {
           itemStyle: {
@@ -367,6 +359,7 @@ function Heatmap({ rows = [], onCellSelect }) {
   */
   return (
     <section className="card">
+
       <div className="section-header">
         <h2>
           Memory Heatmap
@@ -395,6 +388,7 @@ function Heatmap({ rows = [], onCellSelect }) {
           marginBottom: "15px",
         }}
       >
+
         <button
           disabled={
             snapshotIndex === 0
@@ -442,6 +436,7 @@ function Heatmap({ rows = [], onCellSelect }) {
         >
           Next ▶
         </button>
+
       </div>
 
       {/* Heatmap */}
@@ -464,6 +459,7 @@ function Heatmap({ rows = [], onCellSelect }) {
           }}
         />
       </div>
+
     </section>
   );
 }
