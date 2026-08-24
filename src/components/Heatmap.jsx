@@ -378,18 +378,22 @@ function Heatmap({ rows = [], onCellSelect }) {
     );
   };
 
+
   /*
     Y-AXIS LABEL DENSITY
   */
   const addressCount =
     snapshotAddresses.length;
+
   const labelInterval =
     Math.max(
       1,
       Math.ceil(
         addressCount / 15
       )
-    );  
+    );
+
+
   /*
     ECharts interval is zero-based.
 
@@ -412,7 +416,8 @@ function Heatmap({ rows = [], onCellSelect }) {
     space so the heatmap does not become a
     compressed wall of cells.
   */
-  const timeCount = snapshotTimeLabels.length;
+  const timeCount =
+    snapshotTimeLabels.length;
 
   let chartHeight;
 
@@ -430,11 +435,13 @@ function Heatmap({ rows = [], onCellSelect }) {
     chartHeight = addressCount * 4;
   }
 
-// Keep the chart within a reasonable visual range
+  // Keep the chart within a reasonable visual range
   chartHeight = Math.min(
     Math.max(chartHeight, 220),
     750
   );
+
+
   /*
     ECHARTS OPTION
   */
@@ -517,6 +524,7 @@ function Heatmap({ rows = [], onCellSelect }) {
       },
     },
 
+
     grid: {
       top: 20,
       left: 50,
@@ -525,6 +533,7 @@ function Heatmap({ rows = [], onCellSelect }) {
       containLabel: true,
     },
 
+
     xAxis: {
       type: "category",
       data: snapshotTimeLabels,
@@ -532,23 +541,26 @@ function Heatmap({ rows = [], onCellSelect }) {
       axisLabel: {
         interval: Math.max(
           0,
-          Math.floor(snapshotTimeLabels.length / 12)
+          Math.floor(
+            snapshotTimeLabels.length / 12
+          )
         ),
         rotate: 45,
         fontSize: 10,
         color: "#64748b",
       },
 
-    axisLine: {
-      lineStyle: {
-        color: "#262626",
+      axisLine: {
+        lineStyle: {
+          color: "#262626",
+        },
+      },
+
+      axisTick: {
+        show: false,
       },
     },
 
-    axisTick: {
-      show: false,
-    },
-  },
 
     yAxis: {
       type: "category",
@@ -573,14 +585,17 @@ function Heatmap({ rows = [], onCellSelect }) {
       },
     },
 
+
     series: [
       {
         type: "heatmap",
+
         /*
           Disable progressive rendering.
         */
         progressive: 0,
         progressiveThreshold: 0,
+
         /*
           ONLY ACTIVE CELLS ARE INCLUDED.
 
@@ -589,25 +604,37 @@ function Heatmap({ rows = [], onCellSelect }) {
         */
         data:
           snapshotData,
+
         label: {
           show: false,
         },
+
         itemStyle: {
+
           color: (params) => {
-          const row = params.data?.row;
-          return getCellColor(row);
-        },
+            const row =
+              params.data?.row;
 
-        borderColor: (params) => {
-          const row = params.data?.row;
-
-          if (!row || row.isEmpty) {
-            return "#1f2d42";
-          }
-          return getCellColor(row);
+            return getCellColor(row);
           },
-        borderWidth: 0.5,
+
+          borderColor: (params) => {
+            const row =
+              params.data?.row;
+
+            if (
+              !row ||
+              row.isEmpty
+            ) {
+              return "#1f2d42";
+            }
+
+            return getCellColor(row);
+          },
+
+          borderWidth: 0.5,
         },
+
         /*
           -------------------------------------------------
           HOVER
@@ -674,13 +701,29 @@ function Heatmap({ rows = [], onCellSelect }) {
 
     return (
 
-      <section className="card">
+      <section className="heatmap-card">
 
-        <h2>
-          Memory Heatmap
-        </h2>
+        <div className="heatmap-header">
 
-        <p>
+          <div>
+
+            <div className="heatmap-eyebrow">
+              TRAFFIC VISUALIZATION
+            </div>
+
+            <h2>
+              Memory Heatmap
+            </h2>
+
+          </div>
+
+          <div className="heatmap-status">
+            NO DATA
+          </div>
+
+        </div>
+
+        <p className="heatmap-empty">
           No heatmap data available.
         </p>
 
@@ -700,100 +743,76 @@ function Heatmap({ rows = [], onCellSelect }) {
 
     return (
 
-      <section className="card">
+      <section className="heatmap-card">
 
-        <div
-          className="section-header"
-        >
+        <div className="heatmap-header">
 
-          <h2>
-            Memory Heatmap
-          </h2>
+          <div>
 
-          <p>
+            <div className="heatmap-eyebrow">
+              TRAFFIC VISUALIZATION
+            </div>
 
-            Snapshot{" "}
+            <h2>
+              Memory Heatmap
+            </h2>
 
-            {snapshotIndex + 1}
+            <p>
+              Snapshot{" "}
+              {snapshotIndex + 1}
+              {" / "}
+              {totalSnapshots}
+              {" | "}
+              Showing:{" "}
+              {
+                timeLabels[
+                  snapshotStart
+                ]
+              }
+              {" → "}
+              {
+                timeLabels[
+                  snapshotEnd - 1
+                ]
+              }
+            </p>
 
-            /
+          </div>
 
-            {totalSnapshots}
-
-            {" | "}
-
-            Showing:
-
-            {" "}
-
-            {
-              timeLabels[
-                snapshotStart
-              ]
-            }
-
-            {" → "}
-
-            {
-              timeLabels[
-                snapshotEnd - 1
-              ]
-            }
-
-          </p>
+          <div className="heatmap-status">
+            NO ACTIVE TRAFFIC
+          </div>
 
         </div>
 
 
         {/* Snapshot Navigator */}
 
-        <div
-          style={{
-
-            display: "flex",
-
-            alignItems:
-              "center",
-
-            gap: "15px",
-
-            marginBottom:
-              "15px",
-          }}
-        >
+        <div className="snapshot-controls">
 
           <button
-
             disabled={
               snapshotIndex === 0
             }
-
             onClick={() =>
               setSnapshotIndex(
                 snapshotIndex - 1
               )
             }
           >
-
             ◀ Previous
-
           </button>
 
 
           <input
-
             type="range"
-
             min="0"
-
             max={
               totalSnapshots - 1
             }
-
             value={
               snapshotIndex
             }
-
             onChange={(e) =>
               setSnapshotIndex(
                 Number(
@@ -801,37 +820,29 @@ function Heatmap({ rows = [], onCellSelect }) {
                 )
               )
             }
-
-            style={{
-              flex: 1,
-            }}
           />
 
 
           <button
-
             disabled={
               snapshotIndex ===
               totalSnapshots - 1
             }
-
             onClick={() =>
               setSnapshotIndex(
                 snapshotIndex + 1
               )
             }
           >
-
             Next ▶
-
           </button>
 
         </div>
 
 
-        <p>
+        <div className="heatmap-empty">
           No activity in this snapshot.
-        </p>
+        </div>
 
       </section>
     );
@@ -845,48 +856,49 @@ function Heatmap({ rows = [], onCellSelect }) {
   */
   return (
 
-    <section className="card">
+    <section className="heatmap-card">
 
-      <div
-        className="section-header"
-      >
+      <div className="heatmap-header">
 
-        <h2>
-          Memory Heatmap
-        </h2>
+        <div>
+
+          <div className="heatmap-eyebrow">
+            TRAFFIC VISUALIZATION
+          </div>
+
+          <h2>
+            Memory Heatmap
+          </h2>
+
+          <p>
+            Snapshot{" "}
+            {snapshotIndex + 1}
+            {" / "}
+            {totalSnapshots}
+            {" | "}
+            Showing:{" "}
+            {
+              timeLabels[
+                snapshotStart
+              ]
+            }
+            {" → "}
+            {
+              timeLabels[
+                snapshotEnd - 1
+              ]
+            }
+          </p>
+
+        </div>
 
 
-        <p>
-
-          Snapshot{" "}
-
-          {snapshotIndex + 1}
-
-          /
-
-          {totalSnapshots}
-
-          {" | "}
-
-          Showing:
-
-          {" "}
-
-          {
-            timeLabels[
-              snapshotStart
-            ]
-          }
-
-          {" → "}
-
-          {
-            timeLabels[
-              snapshotEnd - 1
-            ]
-          }
-
-        </p>
+        <div className="heatmap-status">
+          {addressCount} ACTIVE{" "}
+          {addressCount === 1
+            ? "ADDRESS"
+            : "ADDRESSES"}
+        </div>
 
       </div>
 
@@ -895,53 +907,31 @@ function Heatmap({ rows = [], onCellSelect }) {
           SNAPSHOT NAVIGATOR
           ------------------------------------------------- */}
 
-      <div
-        style={{
-
-          display: "flex",
-
-          alignItems:
-            "center",
-
-          gap: "15px",
-
-          marginBottom:
-            "15px",
-        }}
-      >
+      <div className="snapshot-controls">
 
         <button
-
           disabled={
             snapshotIndex === 0
           }
-
           onClick={() =>
             setSnapshotIndex(
               snapshotIndex - 1
             )
           }
         >
-
           ◀ Previous
-
         </button>
 
 
         <input
-
           type="range"
-
           min="0"
-
           max={
             totalSnapshots - 1
           }
-
           value={
             snapshotIndex
           }
-
           onChange={(e) =>
             setSnapshotIndex(
               Number(
@@ -949,30 +939,21 @@ function Heatmap({ rows = [], onCellSelect }) {
               )
             )
           }
-
-          style={{
-
-            flex: 1,
-          }}
         />
 
 
         <button
-
           disabled={
             snapshotIndex ===
             totalSnapshots - 1
           }
-
           onClick={() =>
             setSnapshotIndex(
               snapshotIndex + 1
             )
           }
         >
-
           Next ▶
-
         </button>
 
       </div>
@@ -986,17 +967,11 @@ function Heatmap({ rows = [], onCellSelect }) {
 
           All activity for those addresses remains.
 
-          The chart is vertically scrollable if
-          there are many active addresses.
+          The chart is horizontally scrollable
+          if required.
       */}
-        <div
-          style={{
-          overflowX: "auto",
-          overflowY: "hidden",
-          width: "100%",
-          paddingBottom: "5px",        
-        }}
-      >
+
+      <div className="heatmap-chart-wrapper">
 
         <ReactECharts
           option={
@@ -1018,7 +993,9 @@ function Heatmap({ rows = [], onCellSelect }) {
               "100%",
           }}
         />
+
       </div>
+
     </section>
   );
 }

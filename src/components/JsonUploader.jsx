@@ -53,8 +53,8 @@ export default function JsonUploader() {
       if (!response.ok) {
         throw new Error(
           result.details ||
-          result.error ||
-          "Upload failed"
+            result.error ||
+            "Upload failed"
         );
       }
 
@@ -63,22 +63,54 @@ export default function JsonUploader() {
       );
 
       setFile(null);
-
     } catch (error) {
       console.error("Upload error:", error);
-      setStatus(`Upload failed: ${error.message}`);
 
+      setStatus(
+        `Upload failed: ${error.message}`
+      );
     } finally {
       setUploading(false);
     }
   };
 
   return (
-    <div className="json-uploader">
+    <section className="data-management-card">
 
+      {/* Header */}
+      <div className="data-management-header">
+
+        <div>
+          <div className="data-management-eyebrow">
+            DATA MANAGEMENT
+          </div>
+
+          <h2>
+            Update Heatmap Data
+          </h2>
+
+          <p>
+            Upload a new JSON dataset to update
+            the dashboard.
+          </p>
+        </div>
+
+        <div className="data-management-status">
+          <span className="status-dot"></span>
+
+          {file
+            ? "FILE SELECTED"
+            : "READY"}
+        </div>
+
+      </div>
+
+
+      {/* Upload Controls */}
       <div className="upload-controls">
 
         <label className="file-picker">
+
           <input
             type="file"
             accept=".json,application/json"
@@ -86,35 +118,57 @@ export default function JsonUploader() {
             disabled={uploading}
           />
 
-          <span className="file-picker-icon">＋</span>
-          <span>Choose JSON File</span>
+          <span className="file-picker-icon">
+            +
+          </span>
+
+          <span>
+            Choose JSON File
+          </span>
+
         </label>
+
 
         <button
           className="upload-button"
           onClick={handleUpload}
           disabled={!file || uploading}
         >
-          {uploading ? "Uploading..." : "Upload Dataset"}
+          {uploading
+            ? "Uploading..."
+            : "Upload Dataset"}
         </button>
 
       </div>
 
+
+      {/* Selected File */}
       {file && (
         <div className="selected-file">
-          <span className="file-check">✓</span>
 
-          <div>
-            <strong>{file.name}</strong>
+          <div className="file-check">
+            ✓
+          </div>
+
+          <div className="selected-file-info">
+
+            <strong>
+              {file.name}
+            </strong>
+
             <span>
               {(file.size / 1024).toFixed(1)} KB
             </span>
+
           </div>
+
         </div>
       )}
 
+
+      {/* Status */}
       {status && (
-        <p
+        <div
           className={`upload-status ${
             status.startsWith("✓")
               ? "success"
@@ -124,9 +178,9 @@ export default function JsonUploader() {
           }`}
         >
           {status}
-        </p>
+        </div>
       )}
 
-    </div>
+    </section>
   );
 }
