@@ -292,7 +292,7 @@ function Heatmap({ rows = [], onCellSelect }) {
                 };
               }
               
-              if (item.row?.threat_level === "high") {
+              if (item.row?.threat_level === "Bus Starver") {
                 return {
                   ...item,
                   itemStyle: {
@@ -309,7 +309,7 @@ function Heatmap({ rows = [], onCellSelect }) {
               };
             }
           ),
-          
+
         label: {
           show: false,
         },
