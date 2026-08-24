@@ -21,6 +21,12 @@ function Heatmap({ rows = [], onCellSelect }) {
 
   console.log("First heatmap item:", heatmapData[0]);
   console.log(
+    "Bus Starver item:",
+    heatmapData.find(
+      (item) => item.row?.classification === "Bus Starver"
+    )
+  );
+  console.log(
     "Last heatmap item:",
     heatmapData[heatmapData.length - 1]
   );
@@ -252,49 +258,14 @@ function Heatmap({ rows = [], onCellSelect }) {
       },
     },
 
-
-    /*
-      HEATMAP COLOR SCALE
-    */
-    visualMap: {
-
-      min: 0,
-
-      max:
-        maxIntensity,
-
-      calculable: true,
-
-      orient: "horizontal",
-
-      left: "center",
-
-      bottom: 10,
-
-      inRange: {
-
-        color: [
-          "#facc15",
-          "#dc2626",
-        ],
-      },
-    },
-
-
     /*
       HEATMAP SERIES
     */
     series: [
-
       {
-
         type: "heatmap",
-
         progressive: 5000,
-
         progressiveThreshold: 10000,
-
-
         /*
           Only active cells are included
           in snapshotData.
@@ -306,57 +277,55 @@ function Heatmap({ rows = [], onCellSelect }) {
         data:
           snapshotData.map(
             (item) => {
-
               /*
                 Handle empty cells
               */
               if (
                 item.row?.isEmpty
               ) {
-
                 return {
-
                   ...item,
-
                   itemStyle: {
-
                     color:
                       "#111827",
                   },
                 };
               }
+              
+              if (item.row?.threat_level === "high") {
+                return {
+                  ...item,
+                  itemStyle: {
+                  color: "#ef4444",
+                },
+              };
+            }
 
-
-              return item;
+              return {
+                  ...item,
+                 itemStyle: {
+                 color: "#3b82f6",
+                },
+              };
             }
           ),
-
-
+          
         label: {
-
           show: false,
         },
 
 
         itemStyle: {
-
           borderWidth: 1,
-
           borderColor: (params) => {
-
             const row =
               params.data.row;
-
-
             if (
               !row ||
               row.isEmpty
             ) {
-
               return "#1f2d42";
             }
-
-
             return getClassificationBorderColor(
               row.classification
             );
@@ -365,12 +334,9 @@ function Heatmap({ rows = [], onCellSelect }) {
 
 
         emphasis: {
-
           itemStyle: {
-
             borderColor:
               "#ffffff",
-
             borderWidth: 3,
           },
         },
@@ -383,13 +349,9 @@ function Heatmap({ rows = [], onCellSelect }) {
     Cell click handler
   */
   const onEvents = {
-
     click: (params) => {
-
       const row =
         params.data?.row;
-
-
       /*
         Ignore empty cells
       */
@@ -397,7 +359,6 @@ function Heatmap({ rows = [], onCellSelect }) {
         !row ||
         row.isEmpty
       ) {
-
         return;
       }
 
@@ -406,7 +367,6 @@ function Heatmap({ rows = [], onCellSelect }) {
         typeof onCellSelect ===
         "function"
       ) {
-
         onCellSelect(row);
       }
     },
@@ -419,15 +379,11 @@ function Heatmap({ rows = [], onCellSelect }) {
   if (
     heatmapData.length === 0
   ) {
-
     return (
-
       <section className="card">
-
         <h2>
           Memory Heatmap
         </h2>
-
         <p>
           No heatmap data available.
         </p>
