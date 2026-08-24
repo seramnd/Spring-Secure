@@ -304,7 +304,7 @@ function Heatmap({ rows = [], onCellSelect }) {
               return {
                   ...item,
                  itemStyle: {
-                 color: "#3b82f6",
+                 color: "#ef4444",
                 },
               };
             }
