@@ -275,41 +275,33 @@ function Heatmap({ rows = [], onCellSelect }) {
           contains ALL addresses.
         */
         data:
-          snapshotData.map(
-            (item) => {
-              /*
-                Handle empty cells
-              */
-              if (
-                item.row?.isEmpty
-              ) {
-                return {
-                  ...item,
-                  itemStyle: {
-                    color:
-                      "#111827",
-                  },
-                };
-              }
-              
-              if (item.row?.threat_level === "Bus Starver") {
-                return {
-                  ...item,
-                  itemStyle: {
-                  color: "#ef4444",
-                },
-              };
-            }
+        snapshotData.map(
+          (item) => {
 
-              return {
-                  ...item,
-                 itemStyle: {
-                 color: "#ef4444",
-                },
-              };
-            }
-          ),
-
+          if (
+            item.row?.isEmpty
+          ) {
+          return {
+            ...item,
+            itemStyle: {
+            color: "#111827",
+          },
+        };
+      }
+      console.log(
+        "Rendering cell:",
+        item.row?.classification,
+        item.row?.address,
+        item.row?.threat_level
+      );
+      return {
+        ...item,
+        itemStyle: {
+          color: "#ef4444",
+        },
+      };
+    }
+  ),
         label: {
           show: false,
         },
