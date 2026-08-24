@@ -399,9 +399,9 @@ function Heatmap({ rows = [], onCellSelect }) {
     Math.max(
       1,
       Math.ceil(
-        addressCount / 25
+        addressCount / 15
       )
-    );
+    );  
 
 
   /*
@@ -428,15 +428,14 @@ function Heatmap({ rows = [], onCellSelect }) {
   */
   const pixelsPerAddress =
     addressCount > 500
-      ? 14
+      ? 8
       : addressCount > 250
-        ? 16
-        : 24;
-
+        ? 10
+        : 14;
 
   const chartHeight =
     Math.max(
-      400,
+      300,
       addressCount *
         pixelsPerAddress
     );
@@ -667,59 +666,21 @@ function Heatmap({ rows = [], onCellSelect }) {
           -------------------------------------------------
         */
         itemStyle: {
-
-          /*
-            CELL FILL
-
-            Bus Starver -> RED
-            High threat -> RED
-            Medium -> ORANGE
-            Normal -> BLUE
-          */
           color: (params) => {
-
-            const row =
-              params.data?.row;
-
-            return getCellColor(
-              row
-            );
-          },
-
-
-          /*
-            CELL BORDER
-
-            Same colour as the fill.
-
-            This prevents a blue border from
-            visually dominating red cells.
-          */
-          borderColor: (params) => {
-
-            const row =
-              params.data?.row;
-
-
-            if (
-              !row ||
-              row.isEmpty
-            ) {
-
-              return "#1f2d42";
-            }
-
-
-            return getCellColor(
-              row
-            );
-          },
-
-
-          borderWidth: 1,
+          const row = params.data?.row;
+          return getCellColor(row);
         },
 
+        borderColor: (params) => {
+          const row = params.data?.row;
 
+          if (!row || row.isEmpty) {
+            return "#1f2d42";
+          }
+          return getCellColor(row);
+          },
+        borderWidth: 0.5,
+        },
         /*
           -------------------------------------------------
           HOVER
@@ -1101,57 +1062,36 @@ function Heatmap({ rows = [], onCellSelect }) {
           The chart is vertically scrollable if
           there are many active addresses.
       */}
-      <div
-        style={{
-
-          overflowX:
-            "auto",
-
-          overflowY:
-            "auto",
-
-          maxHeight:
-            "750px",
-
-          width:
-            "100%",
-
-          paddingBottom:
-            "5px",
+        <div
+          style={{
+          overflowX: "auto",
+          overflowY: "visible",
+          width: "100%",
+          paddingBottom: "5px",        
         }}
       >
 
         <ReactECharts
-
           option={
             option
           }
-
           onEvents={
             onEvents
           }
-
           notMerge={
             true
           }
-
           lazyUpdate={
             true
           }
-
           style={{
-
             height:
               `${chartHeight}px`,
-
             width:
               "100%",
           }}
-
         />
-
       </div>
-
     </section>
   );
 }
