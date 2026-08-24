@@ -535,7 +535,7 @@ function Heatmap({ rows = [], onCellSelect }) {
 
       top: 30,
 
-      left: 120,
+      left: 50,
 
       right: 30,
 
