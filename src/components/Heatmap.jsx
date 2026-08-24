@@ -326,9 +326,13 @@ function Heatmap({ rows = [], onCellSelect }) {
             ) {
               return "#1f2d42";
             }
+            if (row.classification === "Bus Starver") {
+              return "#ef4444";
+            }
+
             return getClassificationBorderColor(
               row.classification
-            );
+        );
           },
         },
 
