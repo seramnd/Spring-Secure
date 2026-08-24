@@ -94,10 +94,10 @@ export function getClassificationBorderColor(classification) {
       return "#ef4444";
 
     case "Bus Starver":
-      return "#eab308";
+      return "#ef4444";
 
     case "Normal":
-      return "#22c55e";
+      return "#eab308";
 
     case "Empty":
       return "#1f2d42";

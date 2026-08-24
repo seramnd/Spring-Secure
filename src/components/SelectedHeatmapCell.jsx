@@ -1,49 +1,175 @@
 function SelectedHeatmapCell({ selectedCell }) {
   if (!selectedCell) {
     return (
-      <section className="card">
-        <h2>Selected Analysis</h2>
-        <p>Select a heatmap cell.</p>
+      <section className="analysis-card">
+        <div className="analysis-card-header">
+          <div>
+            <div className="analysis-eyebrow">CELL INSPECTION</div>
+            <h2>Selected Analysis</h2>
+          </div>
+        </div>
+
+        <div className="analysis-empty">
+          <div className="analysis-empty-icon">⌁</div>
+          <p>Select a heatmap cell to inspect its activity.</p>
+        </div>
       </section>
     );
   }
 
+  const threatLevel =
+    selectedCell.threat_level?.toLowerCase();
+
+  const severity =
+    selectedCell.severity?.toLowerCase();
+
+  const isHighRisk =
+    threatLevel === "high" ||
+    severity === "high";
+
   return (
-    <section className="card">
-      <h2>Selected Analysis</h2>
+    <section className="analysis-card">
+      
+      {/* Header */}
+      <div className="analysis-card-header">
+        <div>
+          <div className="analysis-eyebrow">
+            CELL INSPECTION
+          </div>
 
-      <p><strong>Address</strong></p>
-      <p>{selectedCell.address}</p>
+          <h2>Selected Analysis</h2>
+        </div>
 
-      <p><strong>Time Window</strong></p>
-      <p>
-        {selectedCell.time_window_start} ns →
-        {" "}
-        {selectedCell.time_window_end} ns
-      </p>
+        <span
+          className={
+            isHighRisk
+              ? "analysis-badge danger"
+              : "analysis-badge"
+          }
+        >
+          {isHighRisk ? "HIGH RISK" : "NORMAL"}
+        </span>
+      </div>
 
-      <p><strong>Intensity</strong></p>
-      <p>{selectedCell.intensity}</p>
+      {/* Address */}
+      <div className="analysis-address-section">
+        <div className="analysis-detail-label">
+          ADDRESS
+        </div>
 
-      <p><strong>Total Transactions</strong></p>
-      <p>{selectedCell.total_txns}</p>
+        <div className="analysis-address">
+          {selectedCell.address}
+        </div>
 
-      <p><strong>Severity</strong></p>
-      <p>{selectedCell.severity}</p>
+        <div className="analysis-time">
+          {selectedCell.time_window_start} ns
+          {" → "}
+          {selectedCell.time_window_end} ns
+        </div>
+      </div>
 
-      <p><strong>Threat Level</strong></p>
-      <p>{selectedCell.threat_level}</p>
+      {/* Main statistics */}
+      <div className="analysis-stats">
 
-      <p><strong>Anomaly Score</strong></p>
-      <p>
-        {selectedCell.anomaly_score?.toFixed(3)}
-      </p>
+        <div className="analysis-stat">
+          <div className="analysis-stat-label">
+            INTENSITY
+          </div>
 
-      <p><strong>AI Flag</strong></p>
-      <p>{selectedCell.ai_flag ? "Yes" : "No"}</p>
+          <div className="analysis-stat-value">
+            {selectedCell.intensity}
+          </div>
+        </div>
 
-      <p><strong>Matched Rule</strong></p>
-      <p>{selectedCell.matched_rule}</p>
+        <div className="analysis-stat">
+          <div className="analysis-stat-label">
+            TRANSACTIONS
+          </div>
+
+          <div className="analysis-stat-value">
+            {selectedCell.total_txns}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Details */}
+      <div className="analysis-details">
+
+        <div>
+          <div className="analysis-detail-label">
+            SEVERITY
+          </div>
+
+          <div
+            className={
+              severity === "high"
+                ? "analysis-detail-value analysis-danger"
+                : "analysis-detail-value"
+            }
+          >
+            {selectedCell.severity}
+          </div>
+        </div>
+
+        <div>
+          <div className="analysis-detail-label">
+            THREAT LEVEL
+          </div>
+
+          <div
+            className={
+              threatLevel === "high"
+                ? "analysis-detail-value analysis-danger"
+                : "analysis-detail-value"
+            }
+          >
+            {selectedCell.threat_level}
+          </div>
+        </div>
+
+        <div>
+          <div className="analysis-detail-label">
+            ANOMALY SCORE
+          </div>
+
+          <div className="analysis-detail-value">
+            {selectedCell.anomaly_score?.toFixed(3)}
+          </div>
+        </div>
+
+        <div>
+          <div className="analysis-detail-label">
+            AI FLAG
+          </div>
+
+          <div
+            className={
+              selectedCell.ai_flag
+                ? "analysis-detail-value analysis-danger"
+                : "analysis-detail-value analysis-success"
+            }
+          >
+            {selectedCell.ai_flag
+              ? "Detected"
+              : "None"}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Matched rule */}
+      <div className="analysis-rule-section">
+
+        <div className="analysis-detail-label">
+          MATCHED RULE
+        </div>
+
+        <div className="analysis-rule">
+          {selectedCell.matched_rule || "None"}
+        </div>
+
+      </div>
 
     </section>
   );
